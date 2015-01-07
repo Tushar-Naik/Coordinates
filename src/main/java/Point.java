@@ -2,8 +2,8 @@
  * Created by tushar.naik on 05/01/15.
  */
 public class Point {
-    int X,Y;
-    public Point(int x, int y) throws InvalidCoordinatesException {
+    float X,Y;
+    public Point(float x, float y) throws InvalidCoordinatesException {
         X = x;
         Y = y;
         if (X > 100 || X < 0) {

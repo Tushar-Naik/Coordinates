@@ -3,16 +3,22 @@
  */
 public class Line {
     private Point P1, P2;
-    private int slope;
+    private float slope;
+    private float yIntercept;
 
     public Line(Point p1, Point p2) {
         P1 = p1;
         P2 = p2;
-        slope = (P2.Y - P1.Y)/(P2.X - P1.Y);
+        slope = getSlope(p1, p2);
+        yIntercept = getyIntercept(p1, slope);
     }
 
-    public int getSlope() {
+    public float getSlope() {
         return slope;
+    }
+
+    public float getSlope(Point p1, Point p2) {
+        return (P2.Y - P1.Y)/(P2.X - P1.Y);
     }
 
     @Override
@@ -42,7 +48,16 @@ public class Line {
     public int hashCode() {
         int result = P1.hashCode();
         result = 31 * result + P2.hashCode();
-        result = 31 * result + slope;
+        result = 31 * result + (slope != +0.0f ? Float.floatToIntBits(slope) : 0);
+        result = 31 * result + (yIntercept != +0.0f ? Float.floatToIntBits(yIntercept) : 0);
         return result;
+    }
+
+    public float getyIntercept() {
+        return yIntercept;
+    }
+
+    public float getyIntercept(Point p, float slope) {
+        return p.Y - slope * p.X;
     }
 }
