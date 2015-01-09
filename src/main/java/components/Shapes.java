@@ -11,6 +11,8 @@ public class Shapes {
 
     Shape shape;
 
+    //TODO add intersection points involved here, or in another abstraction
+
     public Shapes(Shape shape) {
         this.shape = shape;
     }

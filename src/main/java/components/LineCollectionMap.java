@@ -9,6 +9,11 @@ import java.util.Map;
  */
 public class LineCollectionMap {
 
+    /**
+     * For every k intersections, a linesInvolved map is maintained.
+     * This ever line in this map must have a count of 2, to be enclosing a shape
+     */
+
     private Map<Line, Integer> linesInvolved;
 
     public LineCollectionMap() {
@@ -32,6 +37,8 @@ public class LineCollectionMap {
     }
 
     public boolean isEnclosingAShape() {
+        // check if all keys have values=2 in the map, else return false
+        //TODO implement this
         Collection<Integer> values = linesInvolved.values();
         System.out.println("values = " + values);
         return true;

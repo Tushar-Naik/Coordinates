@@ -56,7 +56,7 @@ public class Problem {
     }
 
     public void solve() {
-
+        Set<Shapes> solutionSet = new HashSet<Shapes>();
         if (intersections.size() < 3) {
             System.out.println("No Shapes Present");
             return;
@@ -70,12 +70,17 @@ public class Problem {
                     lineCollectionMap.add(intersections.get(perm));
                 }
                 if(lineCollectionMap.isEnclosingAShape()) {
-
+                    solutionSet.add(new Shapes(i));
                 }
             }
         }
-    }
 
+        System.out.println("#######################");
+        System.out.println("final solution, the shapes present are:");
+        for(Shapes shapes : solutionSet) {
+            System.out.println("Shape:"+shapes.getShapeName());
+        }
+    }
 
 
     public static void main(String[] args) {
