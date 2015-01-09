@@ -17,6 +17,18 @@ public class Intersection {
         float c2 = l2.getyIntercept();
         float x = (m1 - m2) == 0 ? Float.MAX_VALUE : (c2 - c1) / (m1 - m2);
         float y = m1 * x + c1;
+        if ((x < l1.getP1().X && x < l1.getP2().X)
+                | (x > l1.getP1().X && x > l1.getP2().X)
+                | (y > l1.getP1().Y && y > l1.getP2().Y)
+                | (y < l1.getP1().Y && y < l1.getP2().Y)) {
+            throw new InvalidCoordinatesException();
+        }
+        if ((x < l2.getP1().X && x < l2.getP2().X)
+                | (x > l2.getP1().X && x > l2.getP2().X)
+                | (y > l2.getP1().Y && y > l2.getP2().Y)
+                | (y < l2.getP1().Y && y < l2.getP2().Y)) {
+            throw new InvalidCoordinatesException();
+        }
         return new Point(x, y);
     }
 

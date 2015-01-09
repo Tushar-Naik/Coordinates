@@ -30,7 +30,7 @@ public class ProblemTest {
         List<Line> lines = new ArrayList<Line>();
         try {
             lines.add(new Line(new Point(1, 1), new Point(4, 4), "l1"));
-            lines.add(new Line(new Point(1, 2), new Point(4, 4), "l2"));
+            lines.add(new Line(new Point(1, 5), new Point(4, 4), "l2"));
             lines.add(new Line(new Point(1, 1), new Point(1, 4), "l3"));
         } catch (InvalidCoordinatesException e) {
             e.printStackTrace();
