@@ -1,8 +1,10 @@
-package components;
+package intermediates;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import components.Intersection;
+import components.Line;
+import components.Point;
+
+import java.util.*;
 
 public class LineCollectionMap {
 
@@ -42,6 +44,16 @@ public class LineCollectionMap {
             }
         }
         return true;
+    }
+
+    public Set<Point> getShapeEndPoints() {
+        Set<Point> points = new HashSet<Point>();
+        Set<Line> lines = linesInvolved.keySet();
+        for(Line line: lines) {
+            points.add(line.getP1());
+            points.add(line.getP2());
+        }
+        return points;
     }
 
 }

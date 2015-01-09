@@ -1,29 +1,28 @@
 package components;
 
+import java.util.Set;
+
 public class Shapes {
 
     public static enum Shape {
-        TRIANGLE, QUADRILATERAL, PENTAGON, HEXAGON, HEPTAGON, OCTAGON
+        TRIANGLE, QUADRILATERAL, PENTAGON, HEXAGON, HEPTAGON, OCTAGON;
     }
 
     Shape shape;
+    Set<Point> endPoints;
 
-    //TODO add intersection points involved here, or in another abstraction
-
-    public Shapes(Shape shape) {
+    public Shapes(Shape shape, Set<Point> endPoints) {
         this.shape = shape;
+        this.endPoints = endPoints;
     }
 
-    public Shapes(int index) {
-        this.shape = Shape.values()[index - 2];
+    public Shapes(int index, Set<Point> endPoints) {
+        this.shape = Shape.values()[index - 3];
+        this.endPoints = endPoints;
     }
 
     public String getShapeName() {
         return getShapeName(shape);
-    }
-
-    public String getShapeName(int index) {
-        return new Shapes(index).getShapeName();
     }
 
     public String getShapeName(Shape shape) {
@@ -43,5 +42,14 @@ public class Shapes {
             default:
                 return "";
         }
+    }
+
+    @Override
+    public String toString() {
+        String p = "";
+        for (Point point : endPoints) {
+            p = p + point + " ";
+        }
+        return shape + ", with vertices= " + endPoints ;
     }
 }

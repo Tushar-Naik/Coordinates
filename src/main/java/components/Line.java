@@ -27,6 +27,14 @@ public class Line {
         return (P2.Y - P1.Y) / (P2.X - P1.X);
     }
 
+    public Point getP1() {
+        return P1;
+    }
+
+    public Point getP2() {
+        return P2;
+    }
+
     @Override
     public String toString() {
         if (lineName == null) {

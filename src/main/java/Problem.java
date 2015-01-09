@@ -1,6 +1,7 @@
 import components.*;
 import helpers.FileHelper;
 import helpers.Helper;
+import intermediates.LineCollectionMap;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
@@ -69,7 +70,7 @@ public class Problem {
                     lineCollectionMap.add(intersections.get(perm));
                 }
                 if (lineCollectionMap.isEnclosingAShape()) {
-                    solutionSet.add(new Shapes(i));
+                    solutionSet.add(new Shapes(i, lineCollectionMap.getShapeEndPoints()));
                 }
             }
         }
@@ -94,7 +95,7 @@ public class Problem {
             System.out.println("There are no shapes present");
         }
         for (Shapes shapes : solutionSet) {
-            System.out.println("Shape: " + shapes.getShapeName());
+            System.out.println("Shape: " + shapes);
         }
     }
 }
