@@ -26,7 +26,7 @@ public class LineCollectionMap {
     }
 
     private void addLine(Line line) {
-        if(linesInvolved.containsKey(line)) {
+        if (linesInvolved.containsKey(line)) {
             Integer count = linesInvolved.get(line);
             count++;
             linesInvolved.remove(line);
@@ -38,9 +38,12 @@ public class LineCollectionMap {
 
     public boolean isEnclosingAShape() {
         // check if all keys have values=2 in the map, else return false
-        //TODO implement this
         Collection<Integer> values = linesInvolved.values();
-        System.out.println("values = " + values);
+        for (int value : values) {
+            if (value != 2) {
+                return false;
+            }
+        }
         return true;
     }
 

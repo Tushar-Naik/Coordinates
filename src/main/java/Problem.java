@@ -15,7 +15,7 @@ import java.util.Set;
  */
 public class Problem {
     private List<Intersection> intersections;
-    private Set<Line> lines;
+    private List<Line> lines;
 
     public Problem() {
         try {
@@ -26,29 +26,31 @@ public class Problem {
         }
     }
 
-    public Problem(Set<Line> lines) {
+    public Problem(List<Line> lines) {
         this.lines = lines;
         intersections = getIntersections();
     }
 
     private List<Intersection> getIntersections() {
-        List<Intersection> intersectionSet = new ArrayList<Intersection>();
-        for (Line l1 : lines) {
-            for (Line l2 : lines) {
-                if(!l2.equals(l1)){
+        List<Intersection> intersectionList = new ArrayList<Intersection>();
+        for (int i = 0; i < lines.size(); i++) {
+            Line l1 = lines.get(i);
+            for (int j = i+1; j < lines.size(); j++) {
+                Line l2 = lines.get(j);
+                if (!l2.equals(l1)) {
                     try {
                         Intersection intersection = new Intersection(l1, l2);
-                        intersectionSet.add(intersection);
+                        intersectionList.add(intersection);
                     } catch (InvalidCoordinatesException e) {
                         System.out.println("Intersection out of bounds");
                     }
                 }
             }
         }
-        for(Intersection intersection: intersectionSet) {
-            System.out.println("Intersection: "+ intersection);
+        for (Intersection intersection : intersectionList) {
+            System.out.println("Intersection: " + intersection);
         }
-        return intersectionSet;
+        return intersectionList;
     }
 
     List getFileContents(String fileName) throws IOException {
@@ -56,13 +58,13 @@ public class Problem {
         return IOUtils.readLines(in);
     }
 
-    public void solve() {
+    public Set<Shapes> solve() {
         Set<Shapes> solutionSet = new HashSet<Shapes>();
         if (intersections.size() < 3) {
             System.out.println("No Shapes Present");
-            return;
+            return solutionSet;
         }
-        for (int i = 3; i < intersections.size(); i++) {
+        for (int i = 3; i <= intersections.size(); i++) {
             Set<List<Integer>> permutations = Helper.generatePermutations(Helper.range(i));
             LineCollectionMap lineCollectionMap = new LineCollectionMap();
             for (List<Integer> permutation : permutations) {
@@ -74,24 +76,28 @@ public class Problem {
                 }
             }
         }
-        System.out.println("#######################");
-        System.out.println("final solution, the shapes present are:");
-        for (Shapes shapes : solutionSet) {
-            System.out.println("Shape:" + shapes.getShapeName());
-        }
+        return solutionSet;
     }
 
 
     public static void main(String[] args) {
-        Set<Line> lines = new HashSet<Line>();
+        List<Line> lines = new ArrayList<Line>();
         try {
-            lines.add(new Line(new Point(1, 1), new Point(4, 4)));
-            lines.add(new Line(new Point(1, 4), new Point(4, 4)));
-            lines.add(new Line(new Point(1, 1), new Point(1, 4)));
+            lines.add(new Line(new Point(1, 1), new Point(4, 4), "l1"));
+            lines.add(new Line(new Point(1, 4), new Point(4, 4), "l2"));
+            lines.add(new Line(new Point(1, 1), new Point(1, 4), "l3"));
         } catch (InvalidCoordinatesException e) {
             e.printStackTrace();
         }
         Problem problem = new Problem(lines);
-        problem.solve();
+        Set<Shapes> solutionSet = problem.solve();
+        System.out.println("#######################");
+        System.out.println("final solution, the shapes present are:");
+        if(solutionSet.isEmpty()) {
+            System.out.println("There are no shapes present");
+        }
+        for (Shapes shapes : solutionSet) {
+            System.out.println("Shape: " + shapes.getShapeName());
+        }
     }
 }

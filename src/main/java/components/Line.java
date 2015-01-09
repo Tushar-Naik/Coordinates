@@ -4,15 +4,21 @@ package components;
  * Created by tushar.naik on 06/01/15.
  */
 public class Line {
+    private String lineName;
     private Point P1, P2;
     private float slope;
     private float yIntercept;
 
     public Line(Point p1, Point p2) {
+        this(p1, p2, null);
+    }
+
+    public Line(Point p1, Point p2, String lineName) {
         P1 = p1;
         P2 = p2;
         slope = getSlope(p1, p2);
         yIntercept = getyIntercept(p1, slope);
+        this.lineName = lineName;
     }
 
     public float getSlope() {
@@ -20,17 +26,24 @@ public class Line {
     }
 
     public float getSlope(Point p1, Point p2) {
-        if (P2.X - P1.X == 0) return  Float.MAX_VALUE;
-        return (P2.Y - P1.Y)/(P2.X - P1.X);
+        if (P2.X - P1.X == 0) return Float.MAX_VALUE;
+        return (P2.Y - P1.Y) / (P2.X - P1.X);
     }
 
     @Override
     public String toString() {
-        return "Line{" +
-                "P1=" + P1 +
-                ", P2=" + P2 +
-                ", slope=" + slope +
-                '}';
+        if (lineName == null) {
+            return "L[" + P1 +
+                    ", " + P2 +
+                    ", m=" + slope +
+                    ']';
+        } else {
+            return lineName +
+                    "[" + P1 +
+                    ", " + P2 +
+                    ", m=" + slope +
+                    ']';
+        }
     }
 
     @Override
