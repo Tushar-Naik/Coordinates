@@ -34,4 +34,13 @@ public class Intersection {
     public Line getL2() {
         return L2;
     }
+
+    @Override
+    public String toString() {
+        return "Intersection{" +
+                "P=" + P +
+                ", L1=" + L1 +
+                ", L2=" + L2 +
+                '}';
+    }
 }

@@ -35,13 +35,18 @@ public class Problem {
         List<Intersection> intersectionSet = new ArrayList<Intersection>();
         for (Line l1 : lines) {
             for (Line l2 : lines) {
-                try {
-                    Intersection intersection = new Intersection(l1, l2);
-                    intersectionSet.add(intersection);
-                } catch (InvalidCoordinatesException e) {
-                    System.out.println("Intersection out of bounds");
+                if(!l2.equals(l1)){
+                    try {
+                        Intersection intersection = new Intersection(l1, l2);
+                        intersectionSet.add(intersection);
+                    } catch (InvalidCoordinatesException e) {
+                        System.out.println("Intersection out of bounds");
+                    }
                 }
             }
+        }
+        for(Intersection intersection: intersectionSet) {
+            System.out.println("Intersection: "+ intersection);
         }
         return intersectionSet;
     }
@@ -57,24 +62,22 @@ public class Problem {
             System.out.println("No Shapes Present");
             return;
         }
-
         for (int i = 3; i < intersections.size(); i++) {
             Set<List<Integer>> permutations = Helper.generatePermutations(Helper.range(i));
             LineCollectionMap lineCollectionMap = new LineCollectionMap();
             for (List<Integer> permutation : permutations) {
-                for(Integer perm : permutation) {
+                for (Integer perm : permutation) {
                     lineCollectionMap.add(intersections.get(perm));
                 }
-                if(lineCollectionMap.isEnclosingAShape()) {
+                if (lineCollectionMap.isEnclosingAShape()) {
                     solutionSet.add(new Shapes(i));
                 }
             }
         }
-
         System.out.println("#######################");
         System.out.println("final solution, the shapes present are:");
-        for(Shapes shapes : solutionSet) {
-            System.out.println("Shape:"+shapes.getShapeName());
+        for (Shapes shapes : solutionSet) {
+            System.out.println("Shape:" + shapes.getShapeName());
         }
     }
 
