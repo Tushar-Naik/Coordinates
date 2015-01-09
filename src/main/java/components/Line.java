@@ -1,8 +1,5 @@
 package components;
 
-/**
- * Created by tushar.naik on 06/01/15.
- */
 public class Line {
     private String lineName;
     private Point P1, P2;

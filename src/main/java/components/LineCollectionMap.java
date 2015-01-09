@@ -4,9 +4,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by tushar.naik on 09/01/15.
- */
 public class LineCollectionMap {
 
     /**

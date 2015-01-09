@@ -7,9 +7,6 @@ import components.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by tushar.naik on 09/01/15.
- */
 public class FileHelper {
 
     private static Point getPoint(String point) throws InvalidCoordinatesException {

@@ -1,8 +1,5 @@
 package components;
 
-/**
- * Created by tushar.naik on 09/01/15.
- */
 public class Shapes {
 
     public static enum Shape {

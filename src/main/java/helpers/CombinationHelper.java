@@ -2,9 +2,6 @@ package helpers;
 
 import java.util.*;
 
-/**
- * Created by tushar.naik on 08/01/15.
- */
 public class CombinationHelper {
 
     public static Set<List<Integer>> generatePermutations(ArrayList<Integer> input, int startindex, Set<List<Integer>> combinations) {

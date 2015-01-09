@@ -2,9 +2,6 @@ package helpers;
 
 import java.util.*;
 
-/**
- * Created by tushar.naik on 08/01/15.
- */
 public class Helper {
 
     public static ArrayList<Integer> range(int end) {

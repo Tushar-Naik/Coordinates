@@ -1,8 +1,5 @@
 package components;
 
-/**
- * Created by tushar.naik on 07/01/15.
- */
 public class Intersection {
     private Point P;
     private Line L1, L2;

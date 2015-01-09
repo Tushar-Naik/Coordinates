@@ -1,8 +1,5 @@
 package components;
 
-/**
- * Created by tushar.naik on 05/01/15.
- */
 public class Point {
     float X,Y;
     public Point(float x, float y) throws InvalidCoordinatesException {

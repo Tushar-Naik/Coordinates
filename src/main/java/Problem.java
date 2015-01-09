@@ -10,9 +10,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by tushar.naik on 09/01/15.
- */
 public class Problem {
     private List<Intersection> intersections;
     private List<Line> lines;
