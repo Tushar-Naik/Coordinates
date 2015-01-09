@@ -1,3 +1,5 @@
+package components;
+
 /**
  * Created by tushar.naik on 06/01/15.
  */
@@ -18,7 +20,8 @@ public class Line {
     }
 
     public float getSlope(Point p1, Point p2) {
-        return (P2.Y - P1.Y)/(P2.X - P1.Y);
+        if (P2.X - P1.X == 0) return  Float.MAX_VALUE;
+        return (P2.Y - P1.Y)/(P2.X - P1.X);
     }
 
     @Override
