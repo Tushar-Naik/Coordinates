@@ -17,10 +17,6 @@ public class Problem {
     private List<Intersection> intersections;
     private Set<Line> lines;
 
-    enum shape {
-
-    }
-
     public Problem() {
         try {
             lines = FileHelper.populateLines(getFileContents("input.txt"));
